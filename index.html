@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>豆瓣一刻</title>
+	<link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+	<link rel="stylesheet/less" href="./public/less/main.less">
+	<script src="./public/libs/less.js"></script>
+
+    <script src="public/libs/angular.min.js"></script>
+    <script src="public/libs/angular-route.js" ></script>
+
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers.js"></script>
+
+</head>
+<body ng-app="app">
+	<div class="viewport" >
+		<!-- 侧边导航 -->
+		<div class="navs" ng-controller="slider" ng-class="{'pull-right':pullRight}" >
+			<dl >
+				<dt class="login">
+					<div class="avatar">
+						<img src="./public/images/avatar.png" alt="">
+					</div>
+					<span>登录</span>
+				</dt>
+				<dd ng-class="{'active':$index==index}" ng-repeat="item in items" ng-click="toggle()">
+					<a ng-href="{{item.like}}" class="{{item.class}}">
+						<span>{{item.txt}}</span>
+					</a>
+				</dd>
+
+
+			</dl>
+			<div class="extra">
+				<a href="javascript:;" class="icon-image">夜晚</a>
+				<a href="javascript:;" class="icon-download">离线</a>
+			</div>
+		</div>
+
+		<!-- 头部 -->
+		<div class="header"  ng-class="{'pull-right':pullRight}">
+			<a href="javascript:;" class="menu icon-menu" ng-click="toggle()"></a>
+			<h2>{{title}}</h2>
+			<a href="javascript:;" class="search icon-search"></a>
+		</div>
+
+		<div class="container" >
+			<!-- 主体 -->
+			<div class="body"  ng-class="{'pull-right':pullRight}" ng-view>
+
+			</div>
+		</div>
+	</div>
+	<!--<script>
+		var menu = document.querySelector('.menu');
+		var body = document.querySelector('.body');
+		var header = document.querySelector('.header');
+		var navs = document.querySelector('.navs');
+		var dd = navs.querySelectorAll('dd');
+
+		menu.onclick = function () {
+			body.classList.toggle('pull-right');
+			navs.classList.toggle('pull-right');
+			header.classList.toggle('pull-right');
+
+			if(!this.classList.contains('collapsed')) {
+				for(var i=0; i<dd.length; i++) {
+					dd[i].style.transitionDuration = (i + 1) * 0.15 + 's';
+					dd[i].style.transitionProperty = 'all';
+					dd[i].style.transitionDelay = '0.2s';
+					dd[i].style.transitionTimingFunction = 'ease-out';
+					dd[i].style.transform = 'translate(0)';
+				}
+			} else {
+				for(var i=dd.length - 1; i>=0; i&#45;&#45;) {
+					dd[i].style.transitionDuration = (dd.length - i + 1) * 0.05 + 's';
+					dd[i].style.transitionProperty = 'all';
+					dd[i].style.transitionDelay = '';
+					dd[i].style.transitionTimingFunction = 'ease-out';
+					dd[i].style.transform = 'translate(-100%)';
+				}
+			}
+
+			this.classList.toggle('collapsed');
+		}
+	</script>-->
+</body>
+</html>

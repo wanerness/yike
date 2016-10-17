@@ -1,0 +1,15 @@
+
+			<dl class="author">
+				<div class="loading" ng-show="topTaggle">loading...</div>
+				<dt ng-hide="topTaggle">本周推荐</dt>
+				<dd ng-repeat="author in authors">
+					<div class="avatar">
+						<img src="{{author.avatar}}" alt="">
+					</div>
+					<div class="info">
+						<h5>{{author.name}}</h5>
+						<p>{{author.editor_notes}}</p>
+					</div>
+				</dd>
+
+			</dl>
